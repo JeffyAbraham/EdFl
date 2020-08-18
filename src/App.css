@@ -5,6 +5,7 @@
 
   margin: auto;
 }
+
 .WeatherCard {
   margin: auto;
   width: 70%;
@@ -12,7 +13,7 @@
   font-family: "Inter", sans-serif;
   color: #2c2c30;
   height: fit-content;
-  margin-top: -20px;
+  margin-top: -30px;
 }
 .Location {
   font-weight: 300;
@@ -22,6 +23,8 @@
   width: fit-content;
   margin: auto;
   padding: 50px;
+  text-align: center;
+  display: block;
 }
 .DisplayTemp {
   font-size: 58px;
@@ -31,16 +34,23 @@
   align-items: center;
   justify-content: space-between;
 }
-.subIcons {
-  display: flex;
-  font-size: 14px;
-  margin-top: 20px;
- width:fit-content;
 
-  justify-content: space-between;
- 
-}
 .Quote {
   padding: 30px;
   color: black;
+  text-align: center;
+}
+.SubComp
+{
+  
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.Navlink{
+display: flex;
+justify-content: space-between;
+width: 400px;
+
 }
