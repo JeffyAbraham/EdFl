@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Button, FormControl } from "react-bootstrap";
 import SearchIcon from "../Assets/Search.png";
-import { presentWeatherReport } from "../api/apicalls";
+import { presentWeatherReport, weeklyWeatherReport } from "../api/apicalls";
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -16,6 +16,10 @@ class SearchBar extends React.Component {
 
         presentWeatherReport(city).then((res) => {
           this.props.setDetails(res.data);
+        });
+
+        weeklyWeatherReport(city).then((res) => {
+          this.props.setDetails2(res.data.data);
         });
       } else {
         alert("Please enter the city name to continue");

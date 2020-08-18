@@ -19,6 +19,11 @@
   font-weight: 300;
   color: gray;
 }
+.Week{
+  display: flex;
+  justify-content: space-between;
+  padding: 7px;
+}
 .Search {
   width: fit-content;
   margin: auto;

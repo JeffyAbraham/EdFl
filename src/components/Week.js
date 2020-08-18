@@ -1,20 +1,15 @@
 import React from "react";
-
-
+import WeekComponent from "./WeekComponent";
 
 function Week(props) {
-  console.log(props);
- 
-
   return (
-      <div>
-
-
-
-          <h1></h1>
-      </div>
-      
+    <div>
+      {props.weekArray.map(function (item, i) {
+        if (i < 8) {
+          return <WeekComponent data={item} />;
+        }
+      })}
+    </div>
   );
 }
-
 export default Week;

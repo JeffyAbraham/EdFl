@@ -4,9 +4,11 @@ import Display from "./components/Display";
 import SearchBar from "./components/Searchbar";
 import axios from "axios";
 import { Card } from "react-bootstrap";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route,} from "react-router-dom";
 import Navigation from "./components/Navigation";
-import Week from './components/Week'
+import Week from "./components/Week";
+import { weeklyWeatherReport } from "./api/apicalls";
+import Logo from "./Assets/Logo.png";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +17,7 @@ class App extends React.Component {
     this.state = {};
 
     this.setDetails = this.setDetails.bind(this);
+    this.setDetails2 = this.setDetails2.bind(this);
   }
   setDetails(data) {
     this.setState({
@@ -28,6 +31,11 @@ class App extends React.Component {
       sunrise: data.sys["sunrise"],
       sunset: data.sys["sunset"],
       timezone: data.timezone,
+    });
+  }
+  setDetails2(array) {
+    this.setState({
+      weekly: array,
     });
   }
 
@@ -61,16 +69,30 @@ class App extends React.Component {
           timezone: res.data.timezone,
         });
       });
+    weeklyWeatherReport("Dublin").then((res) => {
+      this.setState({
+        weekly: res.data.data,
+      });
+    });
   }
 
   render() {
     return (
       <BrowserRouter>
         <div style={{ backgroundColor: "#0c1642" }}>
+          <img
+            src={Logo}
+            height="45px"
+            width="120px"
+            style={{ margin: "40px" }}
+          />
           <div className="App">
             {/*----------Search bar is an input box whre user can enter the city name*/}
             <div className="Search">
-              <SearchBar setDetails={this.setDetails} />
+              <SearchBar
+                setDetails={this.setDetails}
+                setDetails2={this.setDetails2}
+              />
               <p
                 style={{
                   textAlign: "center",
@@ -81,19 +103,19 @@ class App extends React.Component {
               >
                 Enter the city name
               </p>
-              <Navigation/>
+              <Navigation />
             </div>
 
             {/*Renders Temperature,Country Details,Weather etc*/}
             <div className="WeatherCard">
               <Card>
                 <Route
-                  path="/WeatherNow"
+                  path="/Daily"
                   render={(props) => <Display wetherData={this.state} />}
                 />
                 <Route
-                  path="/WeatherForecast"
-                  render={(props) => <Week cityname={this.state.name}/>}
+                  path="/Weekly"
+                  render={(props) => <Week weekArray={this.state.weekly} />}
                 />
               </Card>
             </div>
