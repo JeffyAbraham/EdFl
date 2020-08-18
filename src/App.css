@@ -1,0 +1,46 @@
+.App {
+  margin-top: 50px;
+  width: 70%;
+  background-color: #0c1642;
+
+  margin: auto;
+}
+.WeatherCard {
+  margin: auto;
+  width: 70%;
+  padding: 10px;
+  font-family: "Inter", sans-serif;
+  color: #2c2c30;
+  height: fit-content;
+  margin-top: -20px;
+}
+.Location {
+  font-weight: 300;
+  color: gray;
+}
+.Search {
+  width: fit-content;
+  margin: auto;
+  padding: 50px;
+}
+.DisplayTemp {
+  font-size: 58px;
+  line-height: 1.3;
+  color: #2c2c30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.subIcons {
+  display: flex;
+  font-size: 14px;
+  margin-top: 20px;
+ width:fit-content;
+
+  justify-content: space-between;
+ 
+}
+.Quote {
+  padding: 30px;
+  color: black;
+}
